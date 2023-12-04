@@ -10,9 +10,14 @@ const PORT = process.env.PORT || 3001;
 app.use(cors()); // app.use(express.json());
 
 const io = new Server(server, {
+    allowRequest: (req, callback) => {
+        const noOriginHeader = req.headers.origin === undefined;
+        callback(null, noOriginHeader);
+    },
     cors: {
-        origin: "http://localhost:3000",
-        methods: ["GET", "POST", "PUT", "DELETE"],
+        origin: "https://localhost:3000",
+        credentials: true
+        // methods: ["GET", "POST", "PUT", "DELETE"],
     }
 });
 
