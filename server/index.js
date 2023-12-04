@@ -10,18 +10,10 @@ const PORT = process.env.PORT || 3001;
 app.use(cors()); // app.use(express.json());
 
 const io = new Server(server, {
-    allowRequest: (req, callback) => {
-        const noOriginHeader = req.headers.origin === undefined;
-        callback(null, noOriginHeader);
-    },
     cors: {
-        origin: "https://online-coding-web-app-frontend.onrender.com/",
-        credentials: true
-        // methods: ["GET", "POST", "PUT", "DELETE"],
+        origin: "*"
     }
 });
-
-io.set('origins', '*:*')
 
 // Local code blocks data base
 const codeBlocks = [
