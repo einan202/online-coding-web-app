@@ -6,4 +6,4 @@ Backend:
 Frontend:
  https://online-coding-web-app-frontend.onrender.com
 
-**note**: for now server works with local frontend app
+**note**: deploy works also with sockets now
