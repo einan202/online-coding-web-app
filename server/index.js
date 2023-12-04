@@ -89,26 +89,38 @@ io.on("connection", (socket) => {
         room1++;
         socket.emit("user_counter", room1);
         socket.emit(`init_${data}`, codeBlocks[data - 1]);
-        setTimeout(() => codeBlocks[0].code = initBlocks[0].code, 120000)
+        setTimeout(() => {
+            codeBlocks[0].code = initBlocks[0].code;
+            room1 = 0;
+        }, 180000);
     });
     socket.on("connect_2", (data) => {
         room2++;
         socket.emit("user_counter", room2);
         socket.emit(`init_${data}`, codeBlocks[data - 1]);
-        setTimeout(() => codeBlocks[1].code = initBlocks[1].code, 120000)
+        setTimeout(() => {
+            codeBlocks[1].code = initBlocks[1].code;
+            room2 = 0;
+        }, 180000);
     });
     socket.on("connect_3", (data) => {
         room3++;
         socket.emit("user_counter", room3);
         socket.emit(`init_${data}`, codeBlocks[data - 1]);
-        setTimeout(() => codeBlocks[2].code = initBlocks[2].code, 120000)
+        setTimeout(() => {
+            codeBlocks[2].code = initBlocks[2].code;
+            room3 = 0;
+        }, 180000);
         
     });
     socket.on("connect_4", (data) => {
         room4++;
         socket.emit("user_counter", room4);
         socket.emit(`init_${data}`, codeBlocks[data - 1]);
-        setTimeout(() => codeBlocks[3].code = initBlocks[3].code, 120000)
+        setTimeout(() => {
+            codeBlocks[3].code = initBlocks[3].code;
+            room4 = 0;
+        }, 180000);
     });
 
     // Update data base code from code editor element and send it to mentor
