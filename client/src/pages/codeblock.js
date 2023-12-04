@@ -1,8 +1,11 @@
 import React, {useState, useEffect, useRef} from "react";
 import {useParams} from 'react-router-dom';
 import io from 'socket.io-client';
+import hljs from 'highlight.js';    
+import javascript from 'highlight.js/lib/languages/javascript';
+import * as atom from '../atom-one-dark.css';
 
-const socket = io.connect("https://online-coding-web-app.onrender.com");
+const socket = io.connect("https://online-coding-web-application.onrender.com");
 
 function CodeBlock() {
     const { id } = useParams();
@@ -23,7 +26,9 @@ function CodeBlock() {
     useEffect(() => {
         // Notify server for page first render to get current code
         socket.emit(`connect_${id}`, `${id}`);
-
+        hljs.registerLanguage('javascript', javascript);
+        hljs.highlightAll();
+    
         socket.on("user_counter", (data) => {
             setMentor(data == 2);
         });
@@ -43,9 +48,10 @@ function CodeBlock() {
     return (
         <div>
             { titleReceived ? <h1>{titleReceived}</h1> : <h1>{codeBlocks[id - 1]}</h1> }
-            {mentor ? <h3>Mentor</h3> : <h3>Student</h3>}
+            { mentor ? <h3>Mentor</h3> : <h3>Student</h3> }
             <pre>
-                <code className="javascript" 
+                <code className="language-javascript"
+                      style={atom}
                       ref={codeRef} 
                       contentEditable={!mentor} 
                       onInput={updateCode}>

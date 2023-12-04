@@ -26,7 +26,7 @@ code {
   margin: auto;
   padding: 20px;
   width: 60%;
-  /* overflow-x: auto; */
+  overflow-x: auto;
 }
 
 /* hljs {
