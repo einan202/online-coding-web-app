@@ -15,11 +15,13 @@ const io = new Server(server, {
         callback(null, noOriginHeader);
     },
     cors: {
-        origin: "https://localhost:3000",
+        origin: "https://online-coding-web-app-frontend.onrender.com/",
         credentials: true
         // methods: ["GET", "POST", "PUT", "DELETE"],
     }
 });
+
+io.set('origins', '*:*')
 
 // Local code blocks data base
 const codeBlocks = [
